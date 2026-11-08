@@ -1,0 +1,36 @@
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "university-assistant"
+version = "0.1.0"
+description = "Assistant intelligent universitaire base sur les documents"
+requires-python = ">=3.11,<3.14"
+
+dependencies = [
+    "streamlit",
+    "langchain",
+    "langchain-community",
+    "langchain-huggingface",
+    "langchain-text-splitters",
+    "sentence-transformers",
+    "faiss-cpu",
+    "pypdf",
+    "python-dotenv"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,47 @@
+
+# ==============================
+# Virtual Environments
+# ==============================
+university_assistant_env/
+.venv/
+venv/
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ==============================
+# Environment Variables
+# ==============================
+.env
+.env.*
+
+# ==============================
+# Data
+# ==============================
+data/documents/*
+!data/documents/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+# ==============================
+# Tests and Cache
+# ==============================
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ==============================
+# IDE
+# ==============================
+.vscode/
+.idea/
+
+# ==============================
+# Jupyter
+# ==============================
+.ipynb_checkpoints/
