@@ -4,9 +4,11 @@ from pathlib import Path
 
 import streamlit as st
 
+from src.ui.components import render_user_card
 from src.ui.session import (
     KEY_EMAIL,
     KEY_ROLE,
+    ROLE_LABELS,
     clear_session,
     is_admin,
     is_authenticated,
@@ -15,6 +17,7 @@ from src.ui.session import (
 ASSETS_DIR = Path("assets")
 STYLE_FILE = ASSETS_DIR / "style.css"
 LOGO_FILE = ASSETS_DIR / "emsi_logo.png"
+SIDEBAR_USER_KEY = "sidebar_user"
 
 
 def apply_branding() -> None:
@@ -56,11 +59,16 @@ def build_pages() -> list[st.Page]:
 
 
 def render_sidebar() -> None:
-    """Affiche l'utilisateur connecté et le bouton de déconnexion."""
-    with st.sidebar:
-        st.text(st.session_state[KEY_EMAIL])
-        st.caption(f"Rôle : {st.session_state[KEY_ROLE]}")
-        if st.button("Se déconnecter"):
+    """Affiche la carte utilisateur et la déconnexion en bas de la sidebar."""
+    role = st.session_state[KEY_ROLE]
+    with st.sidebar.container(key=SIDEBAR_USER_KEY):
+        render_user_card(st.session_state[KEY_EMAIL], ROLE_LABELS.get(role, role))
+        if st.button(
+            "Se déconnecter",
+            key="logout",
+            icon=":material/logout:",
+            width="stretch",
+        ):
             clear_session()
             st.rerun()
 

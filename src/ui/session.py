@@ -12,6 +12,11 @@ KEY_PENDING = "pending"
 ROLE_ADMIN = "admin"
 ROLE_STUDENT = "student"
 
+ROLE_LABELS = {
+    ROLE_ADMIN: "Administrateur",
+    ROLE_STUDENT: "Étudiant",
+}
+
 _SESSION_KEYS = (
     KEY_TOKEN,
     KEY_EMAIL,

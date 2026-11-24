@@ -1,10 +1,14 @@
 """Page de connexion."""
 
+from pathlib import Path
+
 import streamlit as st
 
-from src.ui.components import render_hero
+from src.ui.components import apply_background, render_hero
 from src.ui.session import ROLE_ADMIN, ROLE_STUDENT, start_session
 
+BACKGROUND_FILE = Path("assets/login_bg.png")
+LOGIN_CARD_KEY = "login_card"
 DEV_TOKEN = "dev-token"
 DEV_STUDENT_EMAIL = "etudiant@emsi-edu.ma"
 DEV_ADMIN_EMAIL = "admin@emsi-edu.ma"
@@ -17,9 +21,10 @@ def dev_login(email: str, role: str) -> None:
 
 
 def main() -> None:
-    """Affiche la carte de connexion."""
+    """Affiche la carte de connexion sur la photo de l'école."""
+    apply_background(BACKGROUND_FILE)
     _, center, _ = st.columns([1, 2, 1])
-    with center, st.container(border=True):
+    with center, st.container(key=LOGIN_CARD_KEY):
         render_hero(
             "Assistant EMSI",
             "Ton assistant pour la vie universitaire : règlements, "
