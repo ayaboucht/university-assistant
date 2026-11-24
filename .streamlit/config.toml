@@ -5,5 +5,14 @@ secondaryBackgroundColor = "#EEF6F1"
 textColor = "#262730"
 font = "sans serif"
 
+[theme.sidebar]
+backgroundColor = "#168a55"
+secondaryBackgroundColor = "#11704a"
+textColor = "#FFFFFF"
+primaryColor = "#FFFFFF"
+
+[client]
+toolbarMode = "minimal"
+
 [server]
 port = 8501

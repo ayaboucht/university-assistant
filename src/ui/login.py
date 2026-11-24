@@ -1,27 +1,42 @@
+"""Page de connexion."""
+
 import streamlit as st
 
+from src.ui.components import render_hero
+from src.ui.session import ROLE_ADMIN, ROLE_STUDENT, start_session
 
-def dev_login(email: str, role: str):
-    st.session_state["token"] = "dev-token"
-    st.session_state["email"] = email
-    st.session_state["role"] = role
+DEV_TOKEN = "dev-token"
+DEV_STUDENT_EMAIL = "etudiant@emsi-edu.ma"
+DEV_ADMIN_EMAIL = "admin@emsi-edu.ma"
+
+
+def dev_login(email: str, role: str) -> None:
+    """Connexion de test sans backend (mode développement uniquement)."""
+    start_session(DEV_TOKEN, email, role)
     st.rerun()
 
 
-st.title("Assistant intelligent EMSI")
-st.write("Connecte-toi avec ton compte académique.")
+def main() -> None:
+    """Affiche la carte de connexion."""
+    _, center, _ = st.columns([1, 2, 1])
+    with center, st.container(border=True):
+        render_hero(
+            "Assistant EMSI",
+            "Ton assistant pour la vie universitaire : règlements, "
+            "démarches et organisation.",
+        )
+        st.button(
+            "Se connecter avec Microsoft",
+            type="primary",
+            width="stretch",
+            disabled=True,
+        )
+        st.caption("Connexion Microsoft bientôt disponible.")
+        with st.expander("Mode développement"):
+            if st.button("Entrer comme étudiant", width="stretch"):
+                dev_login(DEV_STUDENT_EMAIL, ROLE_STUDENT)
+            if st.button("Entrer comme admin", width="stretch"):
+                dev_login(DEV_ADMIN_EMAIL, ROLE_ADMIN)
 
-st.link_button(
-    "Se connecter avec Microsoft",
-    "https://login.microsoftonline.com",
-    disabled=True,
-)
-st.caption("La connexion Microsoft sera activée quand le backend sera prêt.")
 
-st.divider()
-st.subheader("Mode développement")
-col1, col2 = st.columns(2)
-if col1.button("Entrer comme étudiant"):
-    dev_login("etudiant@emsi-edu.ma", "student")
-if col2.button("Entrer comme admin"):
-    dev_login("admin@emsi-edu.ma", "admin")
+main()
