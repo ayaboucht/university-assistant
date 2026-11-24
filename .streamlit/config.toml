@@ -1,9 +1,18 @@
 [theme]
-primaryColor = "#6C63FF"
+primaryColor = "#168a55"
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F0F2F6"
+secondaryBackgroundColor = "#EEF6F1"
 textColor = "#262730"
 font = "sans serif"
+
+[theme.sidebar]
+backgroundColor = "#168a55"
+secondaryBackgroundColor = "#11704a"
+textColor = "#FFFFFF"
+primaryColor = "#FFFFFF"
+
+[client]
+toolbarMode = "minimal"
 
 [server]
 port = 8501
