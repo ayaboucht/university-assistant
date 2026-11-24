@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "university-assistant"
 version = "0.1.0"
-description = "Assistant intelligent universitaire base sur les documents"
+description = "Assistant intelligent universitaire pour l'EMSI basé sur les documents officiels"
 requires-python = ">=3.11,<3.14"
 
 dependencies = [
